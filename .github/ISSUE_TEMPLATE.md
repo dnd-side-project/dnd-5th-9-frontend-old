@@ -1,20 +1,13 @@
----
-name: Template
-about: Issue template
-title: "[Type] Title"
-labels: ''
-assignees: seokzin
-
----
-
 ## Description
 
 - 설명
 
 ## Progress
 
-- [ ] todo
-- [ ] todo
-- [ ] todo
+- [] todo1
+- [] todo2
+- [] todo3
 
 ## Comments
+
+- (PR관련 코멘트, 토의할 내용..)
