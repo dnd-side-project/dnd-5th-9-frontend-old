@@ -1,13 +1,20 @@
-## 설명(Description)
+---
+name: Template
+about: Issue template
+title: "[Type] Title"
+labels: ''
+assignees: seokzin
+
+---
+
+## Description
 
 - 설명
 
-## ToDo
+## Progress
 
-- [ ] todo 1
-- [ ] todo 2
-- [ ] todo 3
+- [ ] todo
+- [ ] todo
+- [ ] todo
 
-## 주의사항 및 기타 comments
-
-(PR관련 기타, comment 토의내용)
+## Comments
