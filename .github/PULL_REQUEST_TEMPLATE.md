@@ -1,19 +1,17 @@
-## 개요
+resolved #[issue number]   (ex: resolved #1)
 
-resolved #num
+## Description
 
-- [ ] New Feature
-- [ ] 버그 수정
-- [ ] 그외
+- 설명
 
-## 설명(Description)
+## Progress
 
-- [ ] 생성
-- [ ] 수정
-- [ ] 삭제
+- [] todo1 (한 일들)
+- [] todo2
+- [] todo3
 
-## Screenshot(제작 화면)
+## Screensoht
 
-## 주의사항 및 기타comments
+## Comments
 
-(PR관련 기타, comment 토의내용)
+- (PR관련 코멘트, 토의할 내용..)
