@@ -4,7 +4,7 @@ import "./App.css";
 const App = () => {
   return (
     <>
-      <h1>Hello DND</h1>
+      <h1 className="text-red-500">HELLO DND</h1>
     </>
   );
 };
