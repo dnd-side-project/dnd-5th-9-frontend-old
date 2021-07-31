@@ -1,5 +1,5 @@
 import React from "react";
-import Calendar from "./../../UI/organisms/Calendar";
+import Calendar from "../UI/organisms/Calendar";
 
 const Create = () => {
   return (
