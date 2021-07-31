@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import Navbar from "./UI/organisms/Navbar";
+// import React, { useState, useEffect } from "react";
+import Navbar from "./components/UI/organisms/Navbar";
 import Main from "./components/pages/Main";
 import About from "./components/pages/About";
 import Menu from "./components/pages/Menu";
@@ -13,6 +13,8 @@ import Profile from "./components/pages/Profile";
 import Meeting from "./components/pages/Meeting";
 import Guide from "./components/pages/Guide";
 import Manage from "./components/pages/Manage";
+
+// SPA 추후 무조건 개선해야함
 
 function App() {
   return (

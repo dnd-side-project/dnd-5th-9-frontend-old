@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import Create1 from "./Create1";
+import Create2 from "./Create2";
 
 const Create = () => {
+  const [page, setPage] = useState("");
+
   return (
-    <>
-      <h1>언제부터 언제까지 가능하세요?</h1>
-      <div className="flex justify-center">
-        <div className="bg-green-300 w-3/4 h-96">달력</div>
-      </div>
-    </>
+    <div className="">
+      <button onClick={() => setPage(Create1)}>Create1</button>
+      <button onClick={() => setPage(Create2)}>Create2</button>
+
+      {/*children 을 사용하여 버튼으로 지정된 컴포넌트를 받아옴.*/}
+      <div children={page} />
+    </div>
   );
 };
 

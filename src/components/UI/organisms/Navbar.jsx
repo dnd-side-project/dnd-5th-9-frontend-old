@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import NavbarData from "./NavbarData";
-import Logo from "../../images/Logo.png";
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -15,7 +14,7 @@ const Navbar = () => {
         <FaBars className="fixed left-4" onClick={showSidebar} />
 
         <Link to="/">
-          <img className="w-40" src={Logo} alt="MOIDA" />
+          <img className="w-40" src="images/Logo.png" alt="MOIDA" />
         </Link>
       </div>
 
