@@ -1,15 +1,18 @@
-import React from "react";
-import Calendar from "../UI/organisms/Calendar";
+import React, { useState } from "react";
+import Create1 from "./Create1";
+import Create2 from "./Create2";
 
 const Create = () => {
+  const [page, setPage] = useState("");
+
   return (
-    <>
-      <h1 className="text-center">언제부터 언제까지 가능하세요?</h1>
-      <div className="flex justify-center">
-        <Calendar />
-      </div>
-      <p className="text-center">임시 달력. 시간표 완성되면 대체 예정</p>
-    </>
+    <div className="">
+      <button onClick={() => setPage(Create1)}>Create1</button>
+      <button onClick={() => setPage(Create2)}>Create2</button>
+
+      {/*children 을 사용하여 버튼으로 지정된 컴포넌트를 받아옴.*/}
+      <div children={page} />
+    </div>
   );
 };
 

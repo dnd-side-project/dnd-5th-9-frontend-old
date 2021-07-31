@@ -14,6 +14,8 @@ import Meeting from "./components/pages/Meeting";
 import Guide from "./components/pages/Guide";
 import Manage from "./components/pages/Manage";
 
+// SPA 추후 무조건 개선해야함
+
 function App() {
   return (
     <>
