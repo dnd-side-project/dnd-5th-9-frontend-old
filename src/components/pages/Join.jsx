@@ -3,7 +3,18 @@ import React from "react";
 const Join = () => {
   return (
     <div>
-      <h1 className="text-2xl">Join</h1>
+      <h1>Join</h1>
+
+      <form action="">
+        <div key="">
+          <p>
+            <label>Username</label>
+          </p>
+          <p>
+            <input name="username" />
+          </p>
+        </div>
+      </form>
     </div>
   );
 };
