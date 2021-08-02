@@ -14,6 +14,9 @@ import Profile from "./components/pages/Profile";
 import Meeting from "./components/pages/Meeting";
 import Guide from "./components/pages/Guide";
 import Manage from "./components/pages/Manage";
+import Password from "./components/pages/Password";
+import Password2 from "./components/pages/Password2";
+import Password3 from "./components/pages/Password3";
 
 // SPA 추후 무조건 개선해야함
 
@@ -28,6 +31,9 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/setting" component={Setting} />
           <Route path="/login" component={Login} />
+          <Route path="/password" component={Password} />
+          <Route path="/password2" component={Password2} />
+          <Route path="/password3" component={Password3} />
           <Route path="/join" component={Join} />
           <Route path="/join2" component={Join2} />
           <Route path="/guide" component={Guide} />
