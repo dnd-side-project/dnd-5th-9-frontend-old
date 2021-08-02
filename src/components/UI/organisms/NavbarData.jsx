@@ -6,7 +6,7 @@ const NavbarData = [
   },
   {
     title: "회원가입",
-    path: "/signup",
+    path: "/join",
     cName: "nav-text",
   },
   {
