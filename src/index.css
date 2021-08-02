@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-  @apply border border-red-900;
-} */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
 
 /* 사이드 네비바 */
 
