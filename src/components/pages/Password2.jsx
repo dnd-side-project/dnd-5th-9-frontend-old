@@ -6,12 +6,12 @@ const Password2 = () => {
     <>
       <div className="mt-36 text-center">
         <img
-          class="inline-block object-cover w-48 h-48 rounded-full"
-          src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
+          class="inline-block w-48 h-24"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo6nfQpQ9aPlk0tS0rNFhQj31EhOD_EN68Xezm6dwlPR8vCzvkbG6os5FcmVbvX1i1yUE&usqp=CAU"
           alt="Profile"
         />
 
-        <p className="pt-4 text-xl font-bold">
+        <p className="pt-8 text-xl font-bold">
           비밀번호 재설정 메일을
           <br />
           발송했어요!
