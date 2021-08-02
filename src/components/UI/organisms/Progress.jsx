@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Progress = ({ done }) => {
   const [style, setStyle] = useState({});
+
   return (
     <div className="progress bg-gray-100 h-1">
       <div
