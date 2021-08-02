@@ -8,6 +8,7 @@ import Menu from "./components/pages/Menu";
 import Setting from "./components/pages/Setting";
 import Login from "./components/pages/Login";
 import Join from "./components/pages/Join";
+import Join2 from "./components/pages/Join2";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
 import Meeting from "./components/pages/Meeting";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/setting" component={Setting} />
           <Route path="/login" component={Login} />
           <Route path="/join" component={Join} />
+          <Route path="/join2" component={Join2} />
           <Route path="/guide" component={Guide} />
           <Route path="/setting" component={Setting} />
           <Route path="/create" component={Create} />
