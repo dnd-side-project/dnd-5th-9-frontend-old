@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar pt-4">
+      <div className="navbar m-2">
         <FaBars className="fixed left-4" onClick={showSidebar} />
 
         <Link to="/">
