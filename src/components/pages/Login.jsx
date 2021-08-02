@@ -64,7 +64,7 @@ const Login = () => {
           <nav className="pt-4 flex justify-center">
             <ol class="flex divide-x divide-gray-300">
               <li class="pr-4 text-gray-700">
-                <Link to="#">비밀번호 찾기</Link>
+                <Link to="/password">비밀번호 찾기</Link>
               </li>
               <li class="px-4 text-gray-700">
                 <Link to="/join">회원가입</Link>
