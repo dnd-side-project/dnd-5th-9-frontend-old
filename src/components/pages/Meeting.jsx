@@ -54,8 +54,116 @@ const Meeting = () => {
         </div>
 
         {/* 시간표 */}
-        <div></div>
+        <div className="grid grid-cols-7 gap-1 text-center mt-6 my-16">
+          <div></div>
+          <div>
+            <p className="text-xs text-gray-400">MON</p>
+            <p className="text-sm">11</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400">TUE</p>
+            <p className="text-sm">12</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400">WED</p>
+            <p className="text-sm">13</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400">THU</p>
+            <p className="text-sm">14</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400">FRI</p>
+            <p className="text-sm">15</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400">SAT</p>
+            <p className="text-sm">16</p>
+          </div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 12시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 1시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 2시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 3시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 4시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 5시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-gray-200 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 6시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-gray-200 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+
+          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+            오전 7시
+          </p>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-gray-200 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+        </div>
       </div>
+
+      <div className="mt-8 mb-4 border-4 border-gray-100"></div>
     </>
 
     // <div className="">
