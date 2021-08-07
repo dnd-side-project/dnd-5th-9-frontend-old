@@ -164,6 +164,50 @@ const Meeting = () => {
       </div>
 
       <div className="mt-8 mb-4 border-4 border-gray-100"></div>
+
+      <div className="m-4 mt-4">
+        <h2 className="mt-8 text-lg font-bold">참석 멤버</h2>
+
+        <div className="mt-4 p-4 w-full shadow-2xl rounded-xl">
+          <div className="grid grid-cols-2">
+            <div className="ml-4">
+              <h3 className="my-6 font-bold">
+                가능해요 <span className="text-blue-500">5</span>
+              </h3>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>석진</p>
+              </div>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>하영이</p>
+              </div>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>경후니</p>
+              </div>
+            </div>
+
+            <div className="ml-4">
+              <h3 className="my-6 font-bold">
+                불가능해요 <span className="text-red-500">2</span>
+              </h3>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>이혀니ㅇㅇㅇ</p>
+              </div>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>아람</p>
+              </div>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>서하</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
 
     // <div className="">
