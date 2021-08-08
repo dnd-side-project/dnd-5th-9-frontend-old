@@ -10,15 +10,17 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar m-2">
-        <FaBars className="fixed left-4" onClick={showSidebar} />
-
+      <div className="flex justify-between m-2 h-9">
         <Link to="/">
-          <img className="w-40" src="images/Logo.png" alt="MOIDA" />
+          <img className="h-full p-2" src="images/Logo.png" alt="MOIDA" />
         </Link>
+
+        <FaBars className="m-3" onClick={showSidebar} />
       </div>
 
-      <nav className={sidebar ? "nav-menu active border-r-2" : "nav-menu"}>
+      <hr className="mb-4" />
+
+      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
             <Link to="#" className="menu-bars"></Link>
