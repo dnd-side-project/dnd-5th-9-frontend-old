@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
-import NavbarData from "./NavbarData";
+import { FaBars } from "react-icons/fa";
+import { BsX, BsChevronRight } from "react-icons/bs";
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -22,27 +22,70 @@ const Navbar = () => {
 
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
-          <li className="navbar-toggle">
-            <Link to="#" className="menu-bars"></Link>
-            <FaTimes onClick={showSidebar} className="ml-48" />
+          <li className="flex w-full h-12 justify-end items-center">
+            <BsX onClick={showSidebar} className="mr-4 mt-3 text-3xl" />
+          </li>
+          <Link to="/profile" onClick={showSidebar}>
+            <div className="m-8 mt-16">
+              <h1 className="mt-8 text-2xl font-bold font-">
+                <span className="text-blue-400">경훈</span> 님
+                <br />
+                반가워요!
+              </h1>
+
+              <p className="mt-4 mb-8 text-gray-500">moida@gmail.com</p>
+
+              <Link
+                to="#"
+                className="p-3 flex border border-blue-400 rounded-md text-blue-400 font-medium"
+              >
+                <span className="mx-3">+</span> 새로운 모임 만들기
+              </Link>
+            </div>
+          </Link>
+          <hr className="m-8" />
+
+          <li className="m-8" onClick={showSidebar}>
+            <Link to="/">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">모임 관리</p>
+                <BsChevronRight />
+              </div>
+            </Link>
           </li>
 
-          <Link to="/profile" onClick={showSidebar}>
-            <div className="m-8 bg-green-300 w-1/2 h-32 rounded-full"></div>
-          </Link>
+          <hr className="m-8" />
 
-          <p className="ml-8">소석진님</p>
-          <div className="border w-3/4 m-8"></div>
+          <p className="mx-8 text-xs text-gray-400 font-light">고객센터</p>
 
-          {NavbarData.map((item, idx) => {
-            return (
-              <li key={idx} className={item.cName} onClick={showSidebar}>
-                <Link to={item.path}>
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">이용 방법</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">피드백</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">이용약관</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <p className="mx-8 mt-28 text-sm text-gray-500 underline">로그아웃</p>
         </ul>
       </nav>
     </>
