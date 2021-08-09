@@ -14,40 +14,28 @@
   @apply flex h-12 items-center justify-center;
 }
 
-.navbar-toggle {
-  @apply flex bg-red-400 w-full h-12 justify-center items-center;
-}
-
 /* .menu-bars {
   @apply bg-none;
 } */
 
 .nav-menu {
-  @apply flex w-64 h-full 
+  @apply flex w-72 h-full 
   justify-center fixed top-0 
-  -left-full transition duration-300 ease-in-out;
-  transition-property: left;
+  -right-full transition duration-300 ease-in-out;
+  transition-property: right;
 }
 
 .nav-menu.active {
-  @apply fixed left-0 transition duration-300 ease-in-out;
-  transition-property: left;
-}
-
-.nav-text {
-  @apply flex content-start items-center h-16 ml-8;
-}
-
-.nav-text a {
-  @apply flex text-lg w-full h-full items-center rounded-md;
-}
-
-.nav-text a:hover {
-  @apply bg-blue-400;
+  @apply fixed right-0 transition duration-300 ease-in-out;
+  transition-property: right;
 }
 
 .nav-menu-items {
   @apply w-full bg-white;
+}
+
+.nav-shadow {
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
 }
 
 /* 메인 페이지 */
