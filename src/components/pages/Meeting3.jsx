@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import MapSearchResult from "./../api/MapSearchResult";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaSubway } from "react-icons/fa";
 
 // 결과 보기 -> result로 빼는게 낫나?
 const Meeting3 = () => {
+  const [inputText, setInputText] = useState("");
+  const [place, setPlace] = useState("");
+
+  const onChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setPlace(inputText);
+    setInputText("");
+  };
+
   return (
     <>
       <div className="m-4 mt-20">
@@ -73,6 +87,16 @@ const Meeting3 = () => {
       <div className="flex justify-center items-center h-96 text-center text-gray-300">
         이전 검색 기록이 없어요
       </div>
+
+      <form className="inputForm" onSubmit={handleSubmit}>
+        <input
+          placeholder="Search Place..."
+          onChange={onChange}
+          value={inputText}
+        />
+        <button type="submit">검색</button>
+      </form>
+      <MapSearchResult searchPlace={place} />
     </>
   );
 };
