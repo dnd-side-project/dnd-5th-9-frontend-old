@@ -20,7 +20,7 @@ const Navbar = () => {
 
       <hr className="mb-4" />
 
-      <nav className={sidebar ? "nav-menu active z-50" : "nav-menu"}>
+      <nav className={sidebar ? "nav-menu active z-50 nav-shadow" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li className="flex w-full h-12 justify-end items-center">
             <BsX onClick={showSidebar} className="mr-4 mt-3 text-3xl" />

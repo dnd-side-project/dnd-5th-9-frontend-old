@@ -34,4 +34,8 @@
   @apply w-full bg-white;
 }
 
+.nav-shadow {
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
+}
+
 /* 메인 페이지 */
