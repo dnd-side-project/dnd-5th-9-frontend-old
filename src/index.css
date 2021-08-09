@@ -39,3 +39,16 @@
 }
 
 /* 메인 페이지 */
+
+/* 시그니쳐 컬러 */
+.text-moida {
+  color: #34b6ea;
+}
+
+.bg-moida {
+  background-color: #34b6ea;
+}
+
+.border-moida {
+  border-color: #34b6ea;
+}
