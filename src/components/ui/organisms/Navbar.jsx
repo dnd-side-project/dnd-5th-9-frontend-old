@@ -23,9 +23,77 @@ const Navbar = () => {
       <nav className={sidebar ? "nav-menu active z-50 nav-shadow" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li className="flex w-full h-12 justify-end items-center">
-            <BsX onClick={showSidebar} className="mr-4 mt-3 text-3xl" />
+            <BsX onClick={showSidebar} className="mr-3 mt-3 text-3xl" />
           </li>
-          <Link to="/profile" onClick={showSidebar}>
+
+          <div className="m-8 mt-16">
+            <img className="mt-8 w-12" src="images/LogoIcon.png" alt="MOIDA" />
+
+            <p className="mt-4 mb-8 text-gray-500 text-sm">
+              <span className="font-bold">로그인</span>하시면 모이다를
+              <br />
+              편리하게 이용하실 수 있어요!
+            </p>
+            <Link
+              to="/create"
+              className="p-3 flex border bg-moida border-moida rounded-md text-white font-medium"
+            >
+              <span className="mx-3">+</span> 새로운 모임 만들기
+            </Link>
+          </div>
+
+          <hr className="m-8" />
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/login">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">로그인</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/join">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">회원가입</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <hr className="m-8" />
+
+          <p className="mx-8 text-xs text-gray-400 font-light">고객센터</p>
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/guide">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">이용 방법</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/feedback">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">피드백</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          <li className="mx-8 my-6" onClick={showSidebar}>
+            <Link to="/">
+              <div className="flex justify-between items-center">
+                <p className="font-medium">이용약관</p>
+                <BsChevronRight />
+              </div>
+            </Link>
+          </li>
+
+          {/* <Link to="/profile" onClick={showSidebar}>
             <div className="m-8 mt-16">
               <h1 className="mt-8 text-2xl font-bold font-">
                 <span className="text-blue-400">경훈</span> 님
@@ -43,6 +111,7 @@ const Navbar = () => {
               </Link>
             </div>
           </Link>
+
           <hr className="m-8" />
 
           <li className="m-8" onClick={showSidebar}>
@@ -85,7 +154,7 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <p className="mx-8 mt-28 text-sm text-gray-500 underline">로그아웃</p>
+          <p className="mx-8 mt-28 text-sm text-gray-500 underline">로그아웃</p> */}
         </ul>
       </nav>
     </>
