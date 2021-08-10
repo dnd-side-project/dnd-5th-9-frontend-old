@@ -52,3 +52,21 @@
 .border-moida {
   border-color: #34b6ea;
 }
+
+.bg-moida-green-100 {
+  background-color: #dbfab5;
+}
+
+.bg-moida-green-200 {
+  background-color: #a0f435;
+}
+
+/* 커스텀 폰트 크기 */
+.text-2xs {
+  font-size: 0.5rem;
+}
+
+/* 57px을 위한 h */
+.h-14-5 {
+  height: 57px;
+}
