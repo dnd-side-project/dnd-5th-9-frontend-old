@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import PlaceSearch from "./../api/PlaceSearch";
+import MapContainer from "./../api/MapContainer";
 import { Link } from "react-router-dom";
 import { FaCrosshairs } from "react-icons/fa";
+
 // 장소 선택
 const Meeting2 = () => {
   // 마운트 될때 사용할수 있도록 useEffect 사용
   useEffect(() => {
-    PlaceSearch();
+    MapContainer();
   }, []);
 
   return (
