@@ -15,7 +15,9 @@ const Calendar = () => {
     startDate: null,
     endDate: null,
   });
+
   console.log(selectedDate);
+
   const startWeek = currentDay.clone().startOf("month").week(); // 이번달 1일이 올해 몇번째 주인가?
   let endWeek = currentDay.clone().endOf("month").week(); // 이번달 마지막날이 올해 몇번째 주인가?
   if (endWeek === 1) {
@@ -26,18 +28,19 @@ const Calendar = () => {
   const updateSelectedDate = (timestamp) => {
     const { startDate } = selectedDate;
     console.log(startDate);
+
     if (startDate === null) {
       setSelectedDate({ ...selectedDate, startDate: timestamp });
       setSelectMessage("종료 날짜를 선택해주세요.");
       return;
     }
-
     // vaildation
     if (startDate > timestamp) {
       handleReset();
       setSelectMessage("잘못 선택하셨습니다. 시작 날짜를 선택해주세요.");
       return;
     }
+
     setSelectedDate({ ...selectedDate, endDate: timestamp });
   };
 
@@ -47,6 +50,8 @@ const Calendar = () => {
     const year = currentDay.format("YYYY");
 
     const timestamp = moment(`${year}-${month}-${date}`);
+
+    event.target.classList.add("bg-blue-300");
     updateSelectedDate(timestamp);
   };
 
