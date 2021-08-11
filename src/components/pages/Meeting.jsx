@@ -74,23 +74,25 @@ const Meeting = () => {
         </p>
       </div>
 
-      <hr className="my-8" />
+      <div className="sticky top-0 bg-white">
+        <hr className="my-8" />
 
-      <div className="flex justify-between items-center mx-4">
-        <div className="flex items-center">
-          <p className="text-xl font-bold">DND 5959팀 3번째 모임</p>
-          <p className="text-xs mx-2 font-light text-white bg-yellow-400 p-1 px-2 rounded-xl">
-            진행중
-          </p>
+        <div className="flex justify-between items-center mx-4">
+          <div className="flex items-center">
+            <p className="text-xl font-bold">DND 5959팀 3번째 모임</p>
+            <p className="text-xs mx-2 font-light text-white bg-yellow-400 p-1 px-2 rounded-xl">
+              진행중
+            </p>
+          </div>
+          <FaEllipsisV />
         </div>
-        <FaEllipsisV />
+
+        <p className="text-sm font-light text-gray-400 my-2 mx-4">
+          🔥 모임 가능한 날 입력 고고! 런칭 가보자고
+        </p>
+
+        <div className="mt-8 mb-4 border-4 border-gray-100"></div>
       </div>
-
-      <p className="text-sm font-light text-gray-400 my-2 mx-4">
-        🔥 모임 가능한 날 입력 고고! 런칭 가보자고
-      </p>
-
-      <div className="mt-8 mb-4 border-4 border-gray-100"></div>
 
       <div className="grid grid-cols-2">
         <div>
