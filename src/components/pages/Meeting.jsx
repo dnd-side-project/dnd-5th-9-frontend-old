@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { FaEllipsisV, FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import {
+  FaEllipsisV,
+  FaAngleLeft,
+  FaAngleRight,
+  FaPencilAlt,
+} from "react-icons/fa";
 
 const Meeting = () => {
   const [click, setClick] = useState(false);
@@ -152,7 +157,7 @@ const Meeting = () => {
           </div>
 
           <div className="col-span-7">
-            <div className="grid grid-cols-7 text-center mb-2">
+            <div className="grid grid-cols-4 text-center mb-2">
               <div>
                 <p className="text-2xs text-gray-400">월요일</p>
                 <p className="text-sm">11</p>
@@ -169,24 +174,9 @@ const Meeting = () => {
                 <p className="text-2xs text-gray-400">목요일</p>
                 <p className="text-sm">14</p>
               </div>
-              <div>
-                <p className="text-2xs text-gray-400">금요일</p>
-                <p className="text-sm">15</p>
-              </div>
-              <div>
-                <p className="text-2xs text-gray-400">토요일</p>
-                <p className="text-sm">16</p>
-              </div>
-              <div>
-                <p className="text-2xs text-gray-400">일요일</p>
-                <p className="text-sm">16</p>
-              </div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -197,15 +187,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -216,15 +200,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -235,15 +213,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -254,15 +226,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -273,15 +239,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -292,15 +252,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -311,15 +265,9 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
 
             <div className="flex border-t pt-1">
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
@@ -330,12 +278,16 @@ const Meeting = () => {
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
               <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
-              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-center items-center">
+        <button className="flex justify-center items-center text-sm p-2 border border-gray-300 rounded-full text-gray-400 px-4">
+          <FaPencilAlt className="mr-2" />
+          시간 수정하기
+        </button>
       </div>
 
       <div className="mt-8 mb-4 border-4 border-gray-100"></div>
