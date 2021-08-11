@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
-import { FaAngleLeft, FaAngleRight, FaUndo } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Calendar = () => {
   moment.lang("ko", {
@@ -60,7 +61,11 @@ const Calendar = () => {
 
     const timestamp = moment(`${year}-${month}-${date}`);
 
-    event.target.classList.add("bg-blue-300");
+    event.target.classList.add(
+      "bg-moida-green-300",
+      "text-white",
+      "rounded-full"
+    );
     updateSelectedDate(timestamp);
   };
 
@@ -170,12 +175,15 @@ const Calendar = () => {
         </div>
       )} */}
 
-      {/* {selectedDate.endDate && (
+      {selectedDate.endDate && (
         // 다음 컴포넌트로 이동 props 로 setpage callback 넘겨줘야 함
-        <div className="cursor-pointer border-4 border-yellow-300">
-          다음으로
-        </div>
-      )} */}
+        <Link
+          to="/"
+          className="flex justify-center items-center absolute bottom-0 left-0 text-center text-white h-16 w-screen bg-moida"
+        >
+          <p className="">선택 완료</p>
+        </Link>
+      )}
 
       {/* <ReactCalendar onChange={setDate} value={date} selectRange={true} /> */}
     </div>
