@@ -303,7 +303,8 @@ const Meeting = () => {
               </h3>
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
-                <p>석진</p>
+                <div className="h-4 w-4 -ml-5 -mb-4 rounded-full bg-moida"></div>
+                <p className="ml-1">석진</p>
               </div>
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
