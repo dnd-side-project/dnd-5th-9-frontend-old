@@ -3,42 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>MOIDA</title>
     <style type="text/css">
-      html {
-        height: 100%;
+      * {
+        font-family: "Spoqa Han Sans Neo", "sans-serif";
       }
-      body {
-        height: 100%;
-        margin: 0;
-        background: #0a1f44;
-        display: flex;
-        align-items: center;
+
+      .offline {
+        width: 100vw;
+        height: 100vh;
         text-align: center;
-        justify-content: center;
       }
 
-      .city {
-        align-items: center;
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        padding: 40px 8%;
-        border-radius: 20px;
-        background: #fff;
+      .offline__title {
+        font-size: 28px;
+        margin-bottom: 0px;
       }
 
-      .city-name {
-        font-size: 2em;
+      .offline__msg {
+        font-size: 20px;
+      }
+
+      .logo__icon {
+        margin-top: 12rem;
+      }
+
+      .logo {
+        width: 6rem;
+        display: block;
+        margin: 2rem auto;
       }
     </style>
   </head>
   <body>
-    <div class="city">
-      <h2 class="city-name">
-        <span>Internet Disconnected.. MOIDA</span>
-      </h2>
+    <div class="offline">
+      <img class="logo__icon" src="./images/LogoIcon.png" alt="Logo" />
+      <img class="logo" src="./images/Logo.png" alt="Logo" />
+      <p class="offline__title">이런 😯</p>
+      <p class="offline__msg">네트워크가 오프라인 상태네요 💻</p>
     </div>
   </body>
 </html>
