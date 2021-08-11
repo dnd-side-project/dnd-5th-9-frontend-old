@@ -301,23 +301,31 @@ const Meeting = () => {
           <div className="grid grid-cols-2">
             <div className="ml-4">
               <h3 className="my-6 font-bold">
-                가능해요 <span className="text-blue-500">4</span>
+                가능해요 <span className="text-green-500">4</span>
               </h3>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <div className="flex justify-center items-center bg-red-200 w-8 h-8 mr-2 rounded-full">
+                  😺
+                </div>
                 <div className="h-4 w-4 -ml-5 -mb-4 rounded-full bg-moida"></div>
-                <p className="ml-1">소석진</p>
+                <p className="ml-1 font-bold">소석진 (나)</p>
               </div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <div className="flex justify-center items-center bg-yellow-200 w-8 h-8 mr-2 rounded-full">
+                  🎀
+                </div>
                 <p>하영이</p>
               </div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <div className="flex justify-center items-center bg-yellow-300 w-8 h-8 mr-2 rounded-full">
+                  ⚽
+                </div>
                 <p>경후니</p>
               </div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <div className="flex justify-center items-center bg-green-200 w-8 h-8 mr-2 rounded-full">
+                  🍩
+                </div>
                 <p>이혀니</p>
               </div>
             </div>
@@ -327,11 +335,15 @@ const Meeting = () => {
                 불가능해요 <span className="text-red-500">2</span>
               </h3>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <div className="flex justify-center items-center bg-blue-300 w-8 h-8 mr-2 rounded-full">
+                  🌹
+                </div>
                 <p>람이</p>
               </div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <div className="flex justify-center items-center bg-indigo-400 w-8 h-8 mr-2 rounded-full">
+                  🥑
+                </div>
                 <p>서하서하</p>
               </div>
             </div>
