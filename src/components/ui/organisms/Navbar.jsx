@@ -15,7 +15,7 @@ const Navbar = () => {
           <img className="h-full p-2" src="images/Logo.png" alt="MOIDA" />
         </Link>
 
-        <FaBars className="m-3" onClick={showSidebar} />
+        <FaBars className="mx-3 h-full" onClick={showSidebar} />
       </div>
 
       <hr className="mb-4" />
@@ -23,7 +23,7 @@ const Navbar = () => {
       <nav className={sidebar ? "nav-menu active z-50 nav-shadow" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li className="flex w-full h-12 justify-end items-center">
-            <BsX onClick={showSidebar} className="mr-3 mt-3 text-3xl" />
+            <BsX onClick={showSidebar} className="mr-3 mt-2 text-3xl" />
           </li>
 
           <div className="m-8 mt-16">
