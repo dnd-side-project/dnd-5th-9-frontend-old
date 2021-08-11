@@ -10,6 +10,7 @@ import Login from "./components/pages/Login";
 import Join from "./components/pages/Join";
 import Join2 from "./components/pages/Join2";
 import Create from "./components/pages/Create";
+import Create2 from "./components/pages/Create2";
 import Profile from "./components/pages/Profile";
 import Meeting from "./components/pages/Meeting";
 import Guide from "./components/pages/Guide";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/guide" component={Guide} />
           <Route path="/setting" component={Setting} />
           <Route path="/create" component={Create} />
+          <Route path="/create2" component={Create2} />
           <Route path="/profile" component={Profile} />
           <Route path="/meeting" component={Meeting} />
           <Route path="/meeting2" component={Meeting2} />

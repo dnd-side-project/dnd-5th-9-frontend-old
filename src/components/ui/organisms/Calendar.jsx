@@ -178,7 +178,7 @@ const Calendar = () => {
       {selectedDate.endDate && (
         // 다음 컴포넌트로 이동 props 로 setpage callback 넘겨줘야 함
         <Link
-          to="/"
+          to="/create2"
           className="flex justify-center items-center absolute bottom-0 left-0 text-center text-white h-16 w-screen bg-moida"
         >
           <p className="">선택 완료</p>

@@ -1,16 +1,28 @@
 import React from "react";
 import Calendar from "../ui/organisms/Calendar";
 
-const Create = () => {
+const Create1 = () => {
   return (
     <>
-      <h1 className="text-center">언제부터 언제까지 가능하세요?</h1>
-      <div className="flex justify-center">
-        <Calendar />
+      <div className="m-4 mt-20">
+        <h1 className="mt-8 text-2xl font-bold">반가워요 👋</h1>
+        <h1 className="mt-3 text-2xl font-bold">
+          모임이 가능한
+          <br />
+          날짜를 선택해주세요.
+        </h1>
       </div>
-      <p className="text-center">임시 달력. 시간표 완성되면 대체 예정</p>
+      <div className="mt-8 mb-4 border-4 border-gray-100"></div>
+
+      <div className="mx-6">
+        <Calendar />
+
+        <div className="mt-16 flex justify-center items-center bg-gray-500 h-24 text-center text-white">
+          비회원 광고
+        </div>
+      </div>
     </>
   );
 };
 
-export default Create;
+export default Create1;
