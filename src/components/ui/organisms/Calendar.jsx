@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import moment from "moment";
-import ReactCalendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { FaAngleLeft, FaAngleRight, FaUndo } from "react-icons/fa";
+
 const Calendar = () => {
-  // const [date, setDate] = useState(new Date());
+  moment.lang("ko", {
+    weekdays: [
+      "일요일",
+      "월요일",
+      "화요일",
+      "수요일",
+      "목요일",
+      "금요일",
+      "토요일",
+    ],
+    weekdaysShort: ["일", "월", "화", "수", "목", "금", "토"],
+  });
 
   const today = moment();
   const [currentDay, setCurrentDay] = useState(today.clone().startOf("month"));
-  const [selectMessage, setSelectMessage] =
-    useState("시작 날짜를 선택해주세요.");
 
   const [selectedDate, setSelectedDate] = useState({
     startDate: null,
@@ -31,13 +40,13 @@ const Calendar = () => {
 
     if (startDate === null) {
       setSelectedDate({ ...selectedDate, startDate: timestamp });
-      setSelectMessage("종료 날짜를 선택해주세요.");
+      // setSelectMessage("종료 날짜를 선택해주세요.");
       return;
     }
     // vaildation
     if (startDate > timestamp) {
       handleReset();
-      setSelectMessage("잘못 선택하셨습니다. 시작 날짜를 선택해주세요.");
+      // setSelectMessage("잘못 선택하셨습니다. 시작 날짜를 선택해주세요.");
       return;
     }
 
@@ -57,7 +66,7 @@ const Calendar = () => {
 
   const handleReset = () => {
     setSelectedDate({ startDate: null, endDate: null });
-    setSelectMessage("시작 날짜를 입력해주세요.");
+    // setSelectMessage("시작 날짜를 입력해주세요.");
   };
 
   const handlePrev = () => {
@@ -77,7 +86,10 @@ const Calendar = () => {
 
     for (let row = startWeek; row <= endWeek; row++) {
       calendarElements.push(
-        <div className="calender-row flex" key={row}>
+        <div
+          className="calender-row flex justify-between text-center"
+          key={row}
+        >
           {Array(7)
             .fill(0)
             .map((item, index) => {
@@ -106,8 +118,10 @@ const Calendar = () => {
                 <div
                   key={index}
                   onClick={handleOnDateClick}
-                  className={`calendar-col w-9 h-9 cursor-pointer ${
-                    isSelected ? "bg-blue-300" : ""
+                  className={`flex jc justify-center items-center calendar-col w-9 h-9 mb-5 text-sm cursor-pointer ${
+                    isSelected
+                      ? "bg-moida-green-300 text-white rounded-full"
+                      : ""
                   }`}
                   data-month={nowRenderDate.format("M")}
                 >
@@ -125,28 +139,27 @@ const Calendar = () => {
 
   return (
     <div className="calendar-picker">
-      <div className="message flex justify-center items-center">
-        {selectMessage}
-      </div>
-
-      <div className="calendar-header flex justify-center items-center">
-        <FaUndo onClick={handleReset} />
+      <div className="flex justify-between items-center mt-8">
         <FaAngleLeft onClick={handlePrev} className="" />
-        <h2 className="month text-xl ml-3 mr-3">
-          {currentDay.format("YYYY년 MM월")}
-        </h2>
+        <p className="font-bold">{currentDay.format("YYYY년 M월")}</p>
         <FaAngleRight onClick={handleNext} />
       </div>
 
-      <div className="calendar-table">
-        <div className="calendar-table-header">
+      <div className="calendar-table mt-12">
+        <div className="flex justify-between text-xs">
           {moment.weekdaysShort().map((item, index) => (
-            <span key={index}>{item.toUpperCase()} </span>
+            <p className="w-9 h-4 text-center" key={index}>
+              {item}
+            </p>
           ))}
         </div>
+
+        <hr className="mt-4" />
+
         <div calendar-main>{renderCalendar()}</div>
       </div>
-      {selectedDate.startDate && (
+
+      {/* {selectedDate.startDate && (
         <div>
           시작 날짜:{moment(selectedDate.startDate).format("YYYY MM월DD일")}
         </div>
@@ -155,14 +168,14 @@ const Calendar = () => {
         <div>
           종료 날짜:{moment(selectedDate.endDate).format("YYYY MM월DD일")}
         </div>
-      )}
+      )} */}
 
-      {selectedDate.endDate && (
+      {/* {selectedDate.endDate && (
         // 다음 컴포넌트로 이동 props 로 setpage callback 넘겨줘야 함
         <div className="cursor-pointer border-4 border-yellow-300">
           다음으로
         </div>
-      )}
+      )} */}
 
       {/* <ReactCalendar onChange={setDate} value={date} selectRange={true} /> */}
     </div>
