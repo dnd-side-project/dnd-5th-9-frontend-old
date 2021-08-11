@@ -1,5 +1,4 @@
 import React from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Calendar from "./../ui/organisms/Calendar";
 
@@ -19,7 +18,7 @@ const Main = () => {
       <div className="mx-6">
         <Calendar />
 
-        <div className="mt-16 bg-gray-500 h-24 text-center text-white">
+        <div className="mt-16 flex justify-center items-center bg-gray-500 h-24 text-center text-white">
           비회원 광고
         </div>
       </div>
