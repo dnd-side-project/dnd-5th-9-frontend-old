@@ -2,6 +2,64 @@ import React, { useState } from "react";
 import { FaEllipsisV, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const Meeting = () => {
+  const [click, setClick] = useState(false);
+  const [mode, setMode] = useState(false);
+
+  const onDown = (e) => {
+    e.preventDefault();
+
+    setClick(true);
+
+    if (e.target.classList.contains("bg-moida-green-100")) {
+      setMode(false);
+    } else {
+      setMode(true);
+    }
+
+    if (e.target.classList.contains("block")) {
+      if (e.target.classList.contains("bg-moida-green-100")) {
+        e.target.classList.remove("bg-moida-green-100");
+        e.target.classList.add("bg-moida-green-200");
+      } else {
+        e.target.classList.remove("bg-moida-green-200");
+        e.target.classList.add("bg-moida-green-100");
+      }
+    }
+  };
+
+  const onUp = (e) => {
+    e.preventDefault();
+
+    setClick(false);
+
+    // if (e.target.classList.contains("block")) {
+    //   if (e.target.classList.contains("bg-moida-green-100")) {
+    //     e.target.classList.remove("bg-moida-green-100");
+    //     e.target.classList.add("bg-moida-green-200");
+    //   } else {
+    //     e.target.classList.remove("bg-moida-green-200");
+    //     e.target.classList.add("bg-moida-green-100");
+    //   }
+    // }
+  };
+
+  const onMove = (e) => {
+    e.preventDefault();
+
+    if (click && e.target.classList.contains("block")) {
+      if (mode === false && e.target.classList.contains("bg-moida-green-100")) {
+        e.target.classList.remove("bg-moida-green-100");
+        e.target.classList.add("bg-moida-green-200");
+      } else if (
+        mode === true &&
+        e.target.classList.contains("bg-moida-green-200")
+      ) {
+        e.target.classList.remove("bg-moida-green-200");
+        e.target.classList.add("bg-moida-green-100");
+      }
+    }
+  };
+
   return (
     <>
       <div className="m-4 mt-20">
@@ -47,119 +105,350 @@ const Meeting = () => {
       </div>
 
       <div className="mx-6">
-        <div className="flex justify-between items-center mt-16">
+        <div className="flex justify-between items-center mt-8">
           <FaAngleLeft />
           <p className="font-bold">2021년 7월</p>
           <FaAngleRight />
         </div>
 
         {/* 시간표 */}
-        <div className="grid grid-cols-7 gap-1 text-center mt-6 my-16">
+        <div
+          className="grid grid-cols-8 mt-8 time-table"
+          onMouseMove={onMove}
+          onMouseUp={onUp}
+          onMouseDown={onDown}
+        >
+          <div className="-ml-2">
+            <div className="h-12 -mb-3"></div>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오전 9시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오전 10시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오전 11시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오후 12시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오후 1시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오후 2시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오후 3시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오후 4시
+            </p>
+            <p className="h-14-5 text-left text-2xs align-top text-gray-400 font-light">
+              오후 5시
+            </p>
+          </div>
+
+          <div className="col-span-7">
+            <div className="grid grid-cols-7 text-center mb-2">
+              <div>
+                <p className="text-2xs text-gray-400">월요일</p>
+                <p className="text-sm">11</p>
+              </div>
+              <div>
+                <p className="text-2xs text-gray-400">화요일</p>
+                <p className="text-sm">12</p>
+              </div>
+              <div>
+                <p className="text-2xs text-gray-400">수요일</p>
+                <p className="text-sm">13</p>
+              </div>
+              <div>
+                <p className="text-2xs text-gray-400">목요일</p>
+                <p className="text-sm">14</p>
+              </div>
+              <div>
+                <p className="text-2xs text-gray-400">금요일</p>
+                <p className="text-sm">15</p>
+              </div>
+              <div>
+                <p className="text-2xs text-gray-400">토요일</p>
+                <p className="text-sm">16</p>
+              </div>
+              <div>
+                <p className="text-2xs text-gray-400">일요일</p>
+                <p className="text-sm">16</p>
+              </div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+
+            <div className="flex border-t pt-1">
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-100 rounded-t-sm block"></div>
+            </div>
+            <div className="flex pb-1 border-b">
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+              <div className="w-full h-6 mr-1 bg-moida-green-200 rounded-b-sm block"></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-7 text-center mt-6 my-16">
           <div></div>
           <div>
-            <p className="text-xs text-gray-400">MON</p>
-            <p className="text-sm">11</p>
+            <p className="text-2xs text-gray-400">월요일</p>
+            <p className="text-sm block">11</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">TUE</p>
-            <p className="text-sm">12</p>
+            <p className="text-2xs text-gray-400">화요일</p>
+            <p className="text-sm block">12</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">WED</p>
-            <p className="text-sm">13</p>
+            <p className="text-2xs text-gray-400">수요일</p>
+            <p className="text-sm block">13</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">THU</p>
-            <p className="text-sm">14</p>
+            <p className="text-2xs text-gray-400">목요일</p>
+            <p className="text-sm block">14</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">FRI</p>
-            <p className="text-sm">15</p>
+            <p className="text-2xs text-gray-400">금요일</p>
+            <p className="text-sm block">15</p>
           </div>
           <div>
-            <p className="text-xs text-gray-400">SAT</p>
-            <p className="text-sm">16</p>
+            <p className="text-2xs text-gray-400">토요일</p>
+            <p className="text-sm block">16</p>
           </div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 12시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <div></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 1시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 2시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 3시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-yellow-100 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-yellow-100 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 4시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 5시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-gray-200 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-gray-200 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 6시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-gray-200 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-gray-200 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
 
-          <p className="h-12 text-left text-xs align-top text-gray-400 font-light">
+          <p className="h-12 text-left text-2xs align-top text-gray-400 font-light">
             오전 7시
           </p>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
-          <div className="w-full h-full bg-gray-200 rounded-sm"></div>
-          <div className="w-full h-full bg-green-300 rounded-sm"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
+          <div className="w-full h-full bg-gray-200 rounded-sm block"></div>
+          <div className="w-full h-full bg-green-300 rounded-sm block"></div>
         </div>
       </div>
 
