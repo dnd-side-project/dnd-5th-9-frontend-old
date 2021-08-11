@@ -65,6 +65,18 @@
   background-color: #9be400;
 }
 
+.text-moida-green-100 {
+  color: #dbfab5;
+}
+
+.text-moida-green-200 {
+  color: #a0f435;
+}
+
+.text-moida-green-300 {
+  color: #9be400;
+}
+
 /* 커스텀 폰트 크기 */
 .text-2xs {
   font-size: 0.5rem;
