@@ -293,18 +293,20 @@ const Meeting = () => {
       <div className="mt-8 mb-4 border-4 border-gray-100"></div>
 
       <div className="m-4 mt-4">
-        <h2 className="mt-8 text-lg font-bold">참석 멤버</h2>
+        <h2 className="mt-8 text-lg font-bold">
+          참석 멤버 <span className="font-normal">(6명 참여)</span>
+        </h2>
 
         <div className="mt-4 p-4 w-full shadow-2xl rounded-xl">
           <div className="grid grid-cols-2">
             <div className="ml-4">
               <h3 className="my-6 font-bold">
-                가능해요 <span className="text-blue-500">5</span>
+                가능해요 <span className="text-blue-500">4</span>
               </h3>
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
                 <div className="h-4 w-4 -ml-5 -mb-4 rounded-full bg-moida"></div>
-                <p className="ml-1">석진</p>
+                <p className="ml-1">소석진</p>
               </div>
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
@@ -314,6 +316,10 @@ const Meeting = () => {
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
                 <p>경후니</p>
               </div>
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
+                <p>이혀니</p>
+              </div>
             </div>
 
             <div className="ml-4">
@@ -322,15 +328,11 @@ const Meeting = () => {
               </h3>
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
-                <p>이혀니ㅇㅇㅇ</p>
+                <p>람이</p>
               </div>
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
-                <p>아람</p>
-              </div>
-              <div className="flex items-center mb-4">
-                <div className="w-8 h-8 mr-2 rounded-full bg-indigo-400"></div>
-                <p>서하</p>
+                <p>서하서하</p>
               </div>
             </div>
           </div>
