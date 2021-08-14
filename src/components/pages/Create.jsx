@@ -13,20 +13,18 @@ const Create = () => {
   const { errors } = useFormState({ control });
   const location = useLocation();
   const history = useHistory();
-  const [isSelected, setIsSelected] = useState(true);
+  const [isPlaceOn, setIsPlaceOn] = useState(true);
   const watchFields = watch();
   const { startDateTimeStamp, endDateTimeStamp } = location.state;
-  console.log(isSelected);
 
   const handlePlaceClick = (event) => {
     event.preventDefault(); // ?? button 은 무조건 submit 취급?
     const { placeyn } = event.target.dataset;
-    console.log(event.target.dataset);
     if (placeyn === "true") {
-      setIsSelected(true);
+      setIsPlaceOn(true);
       return;
     }
-    setIsSelected(false);
+    setIsPlaceOn(false);
   };
 
   const checkIsDone = () => {
@@ -37,24 +35,24 @@ const Create = () => {
   const onSubmit = (data, event) => {
     event.preventDefault();
     console.log("submit!", data);
-    handleDatafetch(data);
+    handleSendData(data);
   };
 
   // axios Post  나중에 따로 빼야함 ..
-  const handleDatafetch = async (formData) => {
+  const handleSendData = async (formData) => {
     // 임시 데이터
     const { title, description, nickname } = formData;
     const data = {
       title,
       description,
       nickname,
-      placeYn: isSelected,
+      placeYn: isPlaceOn,
       startDate: startDateTimeStamp,
       endDate: endDateTimeStamp,
     };
-    console.log(data);
+
     const response = await axios.post("/meetings", data);
-    history.push("/meeting", { meetingData: response.data.data }); // private url 로 가게
+    history.push("/meeting", { meetingData: response.data.data }); // response data 받아 private url 로 가게
   };
 
   return (
@@ -121,7 +119,7 @@ const Create = () => {
           <div className="flex w-full border-2 border-gray-300">
             <button
               className={`flex items-center w-1/2 border-2 border-gray-300 justify-center p-5 ${
-                isSelected && "border-blue-400 text-blue-400"
+                isPlaceOn && "border-blue-400 text-blue-400"
               }`}
               onClick={handlePlaceClick}
               data-placeyn={true}
@@ -130,7 +128,7 @@ const Create = () => {
             </button>
             <button
               className={`flex items-center w-1/2 border-2 border-gray-300 justify-center p-5 ${
-                !isSelected && "border-blue-400 text-blue-400"
+                !isPlaceOn && "border-blue-400 text-blue-400"
               }`}
               onClick={handlePlaceClick}
               data-placeyn={false}
@@ -139,7 +137,6 @@ const Create = () => {
             </button>
           </div>
         </div>
-        {/* {console.log(isDone)} */}
         {checkIsDone() && (
           <BottomButton onClick={() => handleSubmit(onSubmit)}>
             선택 완료
