@@ -6,33 +6,31 @@ import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import CreateForm from "../ui/organisms/CreateForm";
 import BottomButton from "../ui/organisms/BottomButton";
-import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hook-form/error-message";
+import { useForm, useFormState } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+
 const Create = () => {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, control } = useForm();
+  const { errors } = useFormState({ control });
   const location = useLocation();
   const history = useHistory();
-  const { startDateTimeStamp, endDateTimeStamp } = location.state;
-  const [isSelected, setIsSelected] = useState(true);
+  const [isSelected, setIsSelected] = useState(false);
   const [isDone, setIsDone] = useState(false); // is ?? Done ?
 
-  // console.log(watch());
+  const { startDateTimeStamp, endDateTimeStamp } = location.state;
 
-  const handlePlaceClick = () => {
+  const handlePlaceClick = (event) => {
+    event.preventDefault(); // ?? button 은 무조건 submit 취급?
     setIsSelected(!isSelected);
     setIsDone(!isDone);
   };
-  console.log(location.state);
+
   const onSubmit = (data, event) => {
-    // event.preventDefault();
+    event.preventDefault();
     console.log("submit!", data);
-    handleDatafetch();
+    // handleDatafetch();
   };
-  const onError = (data) => {
-    const { nickname, title, description } = data;
-    console.log(nickname, title, description);
-    console.log(nickname.ref.classList.add("hello"));
-  };
+
   // axios Post  나중에 따로 빼야함 ..
   const handleDatafetch = async () => {
     // 임시 데이터
@@ -58,7 +56,7 @@ const Create = () => {
         입력해주세요.
       </h1>
 
-      <form onSubmit={handleSubmit(onSubmit, onError)} id="form">
+      <form onSubmit={handleSubmit(onSubmit)}>
         {CreateForm.map((item, index) => {
           return (
             <div key={index}>
@@ -78,6 +76,13 @@ const Create = () => {
                 placeholder={item.placeholder}
                 {...register(item.name, item.validate)}
               ></input>
+              <ErrorMessage
+                errors={errors}
+                name={item.name}
+                render={({ message }) => (
+                  <p className="text-red-600 text-xs">{message}</p>
+                )}
+              />
             </div>
           );
         })}
@@ -125,7 +130,7 @@ const Create = () => {
         </div>
         {console.log(isDone)}
         {isDone && (
-          <BottomButton onClick={handleSubmit(onSubmit, onError)}>
+          <BottomButton onClick={() => handleSubmit(onSubmit)}>
             선택 완료
           </BottomButton>
         )}
