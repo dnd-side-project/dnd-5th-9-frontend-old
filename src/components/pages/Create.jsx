@@ -1,13 +1,15 @@
 import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
+import axios from "axios";
 import moment from "moment";
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import CreateForm from "../ui/organisms/CreateForm";
 import BottomButton from "../ui/organisms/BottomButton";
 
 const Create = () => {
   const location = useLocation();
+  const history = useHistory();
   const { startDateTimeStamp, endDateTimeStamp } = location.state;
   const [isSelected, setIsSelected] = useState(true);
   const [isDone, setIsDone] = useState(false); // is ?? Done ?
@@ -16,6 +18,33 @@ const Create = () => {
     setIsDone(!isDone);
   };
   console.log(location.state);
+
+  // axios Post  나중에 따로 빼야함 ..
+  const handleSubmit = async () => {
+    // 임시 데이터
+    const data = {
+      title: "모임 테스트입니다",
+      description: "post 테스트",
+      nickname: "안녕",
+      placeYn: false,
+      startDate: 1253145,
+      endDate: 1253149,
+    };
+
+    const config = {
+      method: "post",
+      url: "http://moida.club:3000/meetings",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data,
+    };
+
+    const response = await axios.post("http://moida.club:3000/meetings", data);
+    console.log(response);
+    history.push("/meeting");
+  };
+
   return (
     <div className="m-4">
       <h1 className="mt-8 text-2xl font-bold">
@@ -89,7 +118,7 @@ const Create = () => {
         </div>
       </form>
       {console.log(isDone)}
-      {isDone && <BottomButton>선택 완료</BottomButton>}
+      {isDone && <BottomButton onClick={handleSubmit}>선택 완료</BottomButton>}
     </div>
   );
 };
