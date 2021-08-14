@@ -4,7 +4,8 @@ import "react-calendar/dist/Calendar.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Calendar = () => {
+const Calendar = (props) => {
+  const { setSelectedDate, selectedDate } = props;
   moment.lang("ko", {
     weekdays: [
       "일요일",
@@ -20,13 +21,6 @@ const Calendar = () => {
 
   const today = moment();
   const [currentDay, setCurrentDay] = useState(today.clone().startOf("month"));
-
-  const [selectedDate, setSelectedDate] = useState({
-    startDate: null,
-    endDate: null,
-  });
-
-  console.log(selectedDate);
 
   const startWeek = currentDay.clone().startOf("month").week(); // 이번달 1일이 올해 몇번째 주인가?
   let endWeek = currentDay.clone().endOf("month").week(); // 이번달 마지막날이 올해 몇번째 주인가?
@@ -61,6 +55,7 @@ const Calendar = () => {
 
     const timestamp = moment(`${year}-${month}-${date}`);
 
+    // TODO !!BUG!!
     event.target.classList.add(
       "bg-moida-green-300",
       "text-white",
@@ -161,7 +156,7 @@ const Calendar = () => {
 
         <hr className="mt-4" />
 
-        <div calendar-main>{renderCalendar()}</div>
+        <div className="calendar-main">{renderCalendar()}</div>
       </div>
 
       {/* {selectedDate.startDate && (
@@ -175,7 +170,7 @@ const Calendar = () => {
         </div>
       )} */}
 
-      {selectedDate.endDate && (
+      {/* {selectedDate.endDate && (
         // 다음 컴포넌트로 이동 props 로 setpage callback 넘겨줘야 함
         <Link
           to="/create2"
@@ -183,9 +178,7 @@ const Calendar = () => {
         >
           <p className="">선택 완료</p>
         </Link>
-      )}
-
-      {/* <ReactCalendar onChange={setDate} value={date} selectRange={true} /> */}
+      )} */}
     </div>
   );
 };
