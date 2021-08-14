@@ -6,21 +6,33 @@ import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import CreateForm from "../ui/organisms/CreateForm";
 import BottomButton from "../ui/organisms/BottomButton";
+import { useForm } from "react-hook-form";
 
 const Create = () => {
+  const { register, handleSubmit, watch } = useForm();
   const location = useLocation();
   const history = useHistory();
   const { startDateTimeStamp, endDateTimeStamp } = location.state;
   const [isSelected, setIsSelected] = useState(true);
   const [isDone, setIsDone] = useState(false); // is ?? Done ?
+
+  // console.log(watch());
+
   const handlePlaceClick = () => {
     setIsSelected(!isSelected);
     setIsDone(!isDone);
   };
   console.log(location.state);
-
+  const onSubmit = (data, event) => {
+    // event.preventDefault();
+    console.log("submit!", data);
+    handleDatafetch();
+  };
+  const onError = (data) => {
+    console.log(data);
+  };
   // axios Post  나중에 따로 빼야함 ..
-  const handleSubmit = async () => {
+  const handleDatafetch = async () => {
     // 임시 데이터
     const data = {
       title: "모임 테스트입니다",
@@ -53,7 +65,7 @@ const Create = () => {
         입력해주세요.
       </h1>
 
-      <form onSubmit={(event) => event.preventDefault()}>
+      <form onSubmit={handleSubmit(onSubmit, onError)} id="form">
         {CreateForm.map((item, index) => {
           return (
             <div key={index}>
@@ -71,6 +83,7 @@ const Create = () => {
                 type={item.type}
                 name={item.name}
                 placeholder={item.placeholder}
+                {...register(item.name, item.validate)}
               ></input>
             </div>
           );
@@ -85,6 +98,7 @@ const Create = () => {
                 <span className="ml-1"> 부터</span>
               </div>
             </div>
+
             <div className="w-full p-2 flex justify-between border-2 border-gray-400 items-center">
               <label className="font-bold block">종료 시간</label>
               <div className="flex items-center justify-center">
@@ -116,9 +130,13 @@ const Create = () => {
             </button>
           </div>
         </div>
+        {console.log(isDone)}
+        {isDone && (
+          <BottomButton onClick={handleSubmit(onSubmit, onError)}>
+            선택 완료
+          </BottomButton>
+        )}
       </form>
-      {console.log(isDone)}
-      {isDone && <BottomButton onClick={handleSubmit}>선택 완료</BottomButton>}
     </div>
   );
 };
