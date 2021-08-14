@@ -14,7 +14,6 @@ const Create = () => {
   const location = useLocation();
   const history = useHistory();
   const [isSelected, setIsSelected] = useState(true);
-  const [isDone, setIsDone] = useState(false); // is ?? Done ?
   const watchFields = watch();
   const { startDateTimeStamp, endDateTimeStamp } = location.state;
   console.log(isSelected);
@@ -28,12 +27,13 @@ const Create = () => {
       return;
     }
     setIsSelected(false);
-    setIsDone(!isDone);
   };
+
   const checkIsDone = () => {
     const { description, nickname, title } = watchFields;
     return description && nickname && title;
   };
+
   const onSubmit = (data, event) => {
     event.preventDefault();
     console.log("submit!", data);
@@ -54,8 +54,7 @@ const Create = () => {
     };
     console.log(data);
     const response = await axios.post("/meetings", data);
-    console.log(response);
-    history.push("/meeting"); // private url 로 가게
+    history.push("/meeting", { meetingData: response.data.data }); // private url 로 가게
   };
 
   return (

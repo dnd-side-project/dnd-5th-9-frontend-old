@@ -5,10 +5,15 @@ import {
   FaAngleRight,
   FaPencilAlt,
 } from "react-icons/fa";
-
+import { useHistory, useLocation } from "react-router-dom";
 const Meeting = () => {
+  const location = useLocation();
   const [click, setClick] = useState(false);
   const [mode, setMode] = useState(false);
+
+  const { meetingData } = location.state;
+  // 일단 먼저 이전페이지에 가져온 데이터로
+  // meeting data 는 사실 url param으로  fetch(get) 해와야함
 
   const onDown = (e) => {
     e.preventDefault();
@@ -84,7 +89,7 @@ const Meeting = () => {
 
         <div className="flex justify-between items-center mx-4">
           <div className="flex items-center">
-            <p className="text-xl font-bold">DND 5959팀 3번째 모임</p>
+            <p className="text-xl font-bold">{meetingData.meetingInfo.title}</p>
             <p className="text-xs mx-2 font-light text-white bg-yellow-400 p-1 px-2 rounded-xl">
               진행중
             </p>
