@@ -36,7 +36,7 @@ const Create = () => {
             </div>
           );
         })}
-        <input type="time" name="" id="" />
+        <input type="time" name="" id="" step="3600" />
         <input type="time" name="" id="" />
         <input type="button" value="" />
         <input type="button" value="" />
