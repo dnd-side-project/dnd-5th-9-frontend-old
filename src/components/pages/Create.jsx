@@ -1,19 +1,15 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 import Create1 from "./Create1";
 import Create2 from "./Create2";
 
 const Create = () => {
-  const [page, setPage] = useState("");
+  const location = useLocation();
+  const { startDateTimeStamp, endDateTimeStamp } = location.state;
+  console.log(location.state);
 
-  return (
-    <div className="">
-      {/* <button onClick={() => setPage(Create1)}>Create1</button>
-      <button onClick={() => setPage(Create2)}>Create2</button> */}
-
-      {/*children 을 사용하여 버튼으로 지정된 컴포넌트를 받아옴.*/}
-      <div children={page} />
-    </div>
-  );
+  return <div className=""></div>;
 };
 
 export default Create;
