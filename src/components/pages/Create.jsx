@@ -7,7 +7,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import CreateForm from "../ui/organisms/CreateForm";
 import BottomButton from "../ui/organisms/BottomButton";
 import { useForm } from "react-hook-form";
-
+import { ErrorMessage } from "@hook-form/error-message";
 const Create = () => {
   const { register, handleSubmit, watch } = useForm();
   const location = useLocation();
@@ -29,7 +29,9 @@ const Create = () => {
     handleDatafetch();
   };
   const onError = (data) => {
-    console.log(data);
+    const { nickname, title, description } = data;
+    console.log(nickname, title, description);
+    console.log(nickname.ref.classList.add("hello"));
   };
   // axios Post  나중에 따로 빼야함 ..
   const handleDatafetch = async () => {
@@ -43,18 +45,9 @@ const Create = () => {
       endDate: 1253149,
     };
 
-    const config = {
-      method: "post",
-      url: "http://moida.club:3000/meetings",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data,
-    };
-
     const response = await axios.post("/meetings", data);
     console.log(response);
-    history.push("/meeting");
+    history.push("/meeting"); // private url 로 가게
   };
 
   return (
