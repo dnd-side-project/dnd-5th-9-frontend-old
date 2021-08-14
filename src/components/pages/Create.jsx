@@ -52,7 +52,7 @@ const Create = () => {
       data,
     };
 
-    const response = await axios.post("http://moida.club:3000/meetings", data);
+    const response = await axios.post("/meetings", data);
     console.log(response);
     history.push("/meeting");
   };
