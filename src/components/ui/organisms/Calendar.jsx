@@ -4,7 +4,8 @@ import "react-calendar/dist/Calendar.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Calendar = ({ setSelectedDate, selectedDate }) => {
+const Calendar = (props) => {
+  const { setSelectedDate, selectedDate } = props;
   moment.lang("ko", {
     weekdays: [
       "일요일",
@@ -169,7 +170,7 @@ const Calendar = ({ setSelectedDate, selectedDate }) => {
         </div>
       )} */}
 
-      {selectedDate.endDate && (
+      {/* {selectedDate.endDate && (
         // 다음 컴포넌트로 이동 props 로 setpage callback 넘겨줘야 함
         <Link
           to="/create2"
@@ -177,7 +178,7 @@ const Calendar = ({ setSelectedDate, selectedDate }) => {
         >
           <p className="">선택 완료</p>
         </Link>
-      )}
+      )} */}
     </div>
   );
 };

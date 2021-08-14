@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Calendar from "./../ui/organisms/Calendar";
 import moment from "moment";
+import BottomButton from "../ui/organisms/BottomButton";
 
 const Main = () => {
   const history = useHistory();
@@ -43,6 +44,10 @@ const Main = () => {
           비회원 광고
         </div>
       </div>
+
+      {selectedDate.endDate && (
+        <BottomButton onClick={handleSetPage}>선택 완료</BottomButton>
+      )}
     </>
   );
 };
