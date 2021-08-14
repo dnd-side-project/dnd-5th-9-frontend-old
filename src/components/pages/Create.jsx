@@ -1,7 +1,6 @@
 import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
 import axios from "axios";
-import moment from "moment";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import CreateForm from "../ui/organisms/CreateForm";
@@ -10,39 +9,50 @@ import { useForm, useFormState } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
 const Create = () => {
-  const { register, handleSubmit, control } = useForm();
+  const { register, handleSubmit, control, watch } = useForm();
   const { errors } = useFormState({ control });
   const location = useLocation();
   const history = useHistory();
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(true);
   const [isDone, setIsDone] = useState(false); // is ?? Done ?
-
+  const watchFields = watch();
   const { startDateTimeStamp, endDateTimeStamp } = location.state;
+  console.log(isSelected);
 
   const handlePlaceClick = (event) => {
     event.preventDefault(); // ?? button 은 무조건 submit 취급?
-    setIsSelected(!isSelected);
+    const { placeyn } = event.target.dataset;
+    console.log(event.target.dataset);
+    if (placeyn === "true") {
+      setIsSelected(true);
+      return;
+    }
+    setIsSelected(false);
     setIsDone(!isDone);
   };
-
+  const checkIsDone = () => {
+    const { description, nickname, title } = watchFields;
+    return description && nickname && title;
+  };
   const onSubmit = (data, event) => {
     event.preventDefault();
     console.log("submit!", data);
-    // handleDatafetch();
+    handleDatafetch(data);
   };
 
   // axios Post  나중에 따로 빼야함 ..
-  const handleDatafetch = async () => {
+  const handleDatafetch = async (formData) => {
     // 임시 데이터
+    const { title, description, nickname } = formData;
     const data = {
-      title: "모임 테스트입니다",
-      description: "post 테스트",
-      nickname: "안녕",
-      placeYn: false,
-      startDate: 1253145,
-      endDate: 1253149,
+      title,
+      description,
+      nickname,
+      placeYn: isSelected,
+      startDate: startDateTimeStamp,
+      endDate: endDateTimeStamp,
     };
-
+    console.log(data);
     const response = await axios.post("/meetings", data);
     console.log(response);
     history.push("/meeting"); // private url 로 가게
@@ -115,21 +125,23 @@ const Create = () => {
                 isSelected && "border-blue-400 text-blue-400"
               }`}
               onClick={handlePlaceClick}
+              data-placeyn={true}
             >
               필요해요
             </button>
             <button
               className={`flex items-center w-1/2 border-2 border-gray-300 justify-center p-5 ${
-                isSelected && "border-blue-400 text-blue-400"
+                !isSelected && "border-blue-400 text-blue-400"
               }`}
               onClick={handlePlaceClick}
+              data-placeyn={false}
             >
               다음에 받을래요
             </button>
           </div>
         </div>
-        {console.log(isDone)}
-        {isDone && (
+        {/* {console.log(isDone)} */}
+        {checkIsDone() && (
           <BottomButton onClick={() => handleSubmit(onSubmit)}>
             선택 완료
           </BottomButton>
