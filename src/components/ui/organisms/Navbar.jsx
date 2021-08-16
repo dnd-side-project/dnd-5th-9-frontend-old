@@ -5,8 +5,11 @@ import { BsX, BsChevronRight } from "react-icons/bs";
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
+  const handleLogout = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
 
   return (
     <>
@@ -27,13 +30,31 @@ const Navbar = () => {
           </li>
 
           <div className="m-8 mt-16">
-            <img className="mt-8 w-12" src="images/LogoIcon.png" alt="MOIDA" />
+            {isLoggedIn ? (
+              <>
+                <h1 className="mt-8 text-xl font-bold">
+                  오구오구 님<br />
+                  반가워요!
+                </h1>
+                <p className="mt-4 mb-8 text-gray-500 text-sm">
+                  moida@gmail.com
+                </p>
+              </>
+            ) : (
+              <>
+                <img
+                  className="mt-8 w-12"
+                  src="images/LogoIcon.png"
+                  alt="MOIDA"
+                />
+                <p className="mt-4 mb-8 text-gray-500 text-sm">
+                  <span className="font-bold">로그인</span>하시면 모이다를
+                  <br />
+                  편리하게 이용하실 수 있어요!
+                </p>
+              </>
+            )}
 
-            <p className="mt-4 mb-8 text-gray-500 text-sm">
-              <span className="font-bold">로그인</span>하시면 모이다를
-              <br />
-              편리하게 이용하실 수 있어요!
-            </p>
             <Link
               to="/create"
               className="p-3 flex border bg-moida border-moida rounded-md text-white font-medium"
@@ -43,24 +64,38 @@ const Navbar = () => {
           </div>
 
           <hr className="m-8" />
+          {isLoggedIn ? (
+            <>
+              <li className="mx-8 my-6" onClick={showSidebar}>
+                <Link to="/join">
+                  <div className="flex justify-between items-center">
+                    <p className="font-medium">모임 관리</p>
+                    <BsChevronRight />
+                  </div>
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="mx-8 my-6" onClick={showSidebar}>
+                <Link to="/login">
+                  <div className="flex justify-between items-center">
+                    <p className="font-medium">로그인</p>
+                    <BsChevronRight />
+                  </div>
+                </Link>
+              </li>
 
-          <li className="mx-8 my-6" onClick={showSidebar}>
-            <Link to="/login">
-              <div className="flex justify-between items-center">
-                <p className="font-medium">로그인</p>
-                <BsChevronRight />
-              </div>
-            </Link>
-          </li>
-
-          <li className="mx-8 my-6" onClick={showSidebar}>
-            <Link to="/join">
-              <div className="flex justify-between items-center">
-                <p className="font-medium">회원가입</p>
-                <BsChevronRight />
-              </div>
-            </Link>
-          </li>
+              <li className="mx-8 my-6" onClick={showSidebar}>
+                <Link to="/join">
+                  <div className="flex justify-between items-center">
+                    <p className="font-medium">회원가입</p>
+                    <BsChevronRight />
+                  </div>
+                </Link>
+              </li>
+            </>
+          )}
 
           <hr className="m-8" />
 
