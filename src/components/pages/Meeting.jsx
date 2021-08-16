@@ -6,14 +6,20 @@ import {
   FaPencilAlt,
 } from "react-icons/fa";
 import { useHistory, useLocation } from "react-router-dom";
-const Meeting = () => {
+
+const Meeting = (props) => {
   const location = useLocation();
   const [click, setClick] = useState(false);
   const [mode, setMode] = useState(false);
+  const meetingId = props.match.params.id;
 
   const { meetingData } = location.state;
   // 일단 먼저 이전페이지에 가져온 데이터로
   // meeting data 는 사실 url param으로  fetch(get) 해와야함
+
+  // to do meeting id 로 모임 정보 가져와서 뿌려주기
+  console.log(meetingId);
+  // meeting id 가 유효하지 않으면 홈페이지로 보내버리기
 
   const onDown = (e) => {
     e.preventDefault();
