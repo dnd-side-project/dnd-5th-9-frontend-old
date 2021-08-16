@@ -20,16 +20,21 @@ import Password2 from "./components/pages/Password2";
 import Password3 from "./components/pages/Password3";
 import Meeting2 from "./components/pages/Meeting2";
 import Meeting3 from "./components/pages/Meeting3";
+import { useState } from "react";
 
 // SPA 추후 무조건 개선해야함
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
-          <Route path="/" exact component={Main} />
+          <Route path="/" exact>
+            <Main isLoggedIn={isLoggedIn} />
+          </Route>
           <Route path="/menu" component={Menu} />
           <Route path="/about" component={About} />
           <Route path="/setting" component={Setting} />
