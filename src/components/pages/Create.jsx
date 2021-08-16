@@ -15,7 +15,8 @@ const Create = () => {
   const history = useHistory();
   const [isPlaceOn, setIsPlaceOn] = useState(true);
   const watchFields = watch();
-  const { startDateTimeStamp, endDateTimeStamp } = location.state;
+
+  !location.state && history.push("/"); // create 로 바로 접근시 홈으로 보내버림
 
   const handlePlaceClick = (event) => {
     event.preventDefault(); // ?? button 은 무조건 submit 취급?
@@ -34,14 +35,13 @@ const Create = () => {
 
   const onSubmit = (data, event) => {
     event.preventDefault();
-    console.log("submit!", data);
     handleSendData(data);
   };
 
   // axios Post  나중에 따로 빼야함 ..
   const handleSendData = async (formData) => {
-    // 임시 데이터
     const { title, description, nickname } = formData;
+    const { startDateTimeStamp, endDateTimeStamp } = location.state;
     const data = {
       title,
       description,
@@ -50,9 +50,10 @@ const Create = () => {
       startDate: startDateTimeStamp,
       endDate: endDateTimeStamp,
     };
-
+    console.log("submit!", data);
     const response = await axios.post("/meetings", data);
-    history.push("/meeting", { meetingData: response.data.data }); // response data 받아 private url 로 가게
+    const id = response.data.data.meetingInfo.id;
+    history.push(`/meeting/${id}`, { meetingData: response.data.data }); // response data 받아 private url 로 가게
   };
 
   return (
