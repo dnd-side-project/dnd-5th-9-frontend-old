@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { BsX, BsChevronRight } from "react-icons/bs";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [sidebar, setSidebar] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   const showSidebar = () => setSidebar(!sidebar);
   const handleLogout = () => {
-    setIsLoggedIn(!isLoggedIn);
+    setTimeout(() => {
+      setIsLoggedIn(!isLoggedIn);
+    }, 800);
   };
 
   return (
@@ -33,7 +35,8 @@ const Navbar = () => {
             {isLoggedIn ? (
               <>
                 <h1 className="mt-8 text-xl font-bold">
-                  오구오구 님<br />
+                  <span className="text-blue-400">오구오구 </span>님
+                  <br />
                   반가워요!
                 </h1>
                 <p className="mt-4 mb-8 text-gray-500 text-sm">
@@ -127,7 +130,14 @@ const Navbar = () => {
               </div>
             </Link>
           </li>
-
+          {isLoggedIn && (
+            <p
+              onClick={handleLogout}
+              className="mx-8 cursor-pointer mt-28 text-sm text-gray-500 underline"
+            >
+              로그아웃
+            </p>
+          )}
           {/* <Link to="/profile" onClick={showSidebar}>
             <div className="m-8 mt-16">
               <h1 className="mt-8 text-2xl font-bold font-">

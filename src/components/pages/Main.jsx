@@ -4,9 +4,9 @@ import Calendar from "./../ui/organisms/Calendar";
 import moment from "moment";
 import BottomButton from "../ui/organisms/BottomButton";
 
-const Main = () => {
+const Main = (props) => {
   const history = useHistory();
-
+  const { isLoggedIn } = props;
   const [selectedDate, setSelectedDate] = useState({
     startDate: null,
     endDate: null,
@@ -25,7 +25,13 @@ const Main = () => {
   return (
     <>
       <div className="m-4 mt-20">
-        <h1 className="mt-8 text-2xl font-bold">반가워요 👋</h1>
+        {isLoggedIn ? (
+          <h1 className="mt-8 text-2xl font-bold">
+            <span className="text-blue-400">오구오구</span>님 👋
+          </h1>
+        ) : (
+          <h1 className="mt-8 text-2xl font-bold">반가워요 👋</h1>
+        )}
         <h1 className="mt-3 text-2xl font-bold">
           모임이 가능한
           <br />
