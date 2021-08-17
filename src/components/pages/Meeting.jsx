@@ -4,10 +4,12 @@ import {
   FaAngleLeft,
   FaAngleRight,
   FaPencilAlt,
+  FaShareAlt,
 } from "react-icons/fa";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Meeting = (props) => {
+  const ontextClick = () => navigator.clipboard.writeText("hello");
   const location = useLocation();
   const [click, setClick] = useState(false);
   const [mode, setMode] = useState(false);
@@ -80,9 +82,9 @@ const Meeting = (props) => {
     <>
       <div className="m-4 mt-20">
         <h1 className="mt-8 text-2xl font-bold">
-          출발하실 위치를
+          모임이 가능한 시간을
           <br />
-          검색해주세요.
+          추가해주세요.
         </h1>
         <p className="text-gray-400 text-sm mt-3 font-light">
           <span className="text-red-400 mr-2 font-medium">TIP</span>
@@ -100,7 +102,10 @@ const Meeting = (props) => {
               진행중
             </p>
           </div>
-          <FaEllipsisV />
+          <div className="flex ml-2 text-xl">
+            <FaShareAlt className="mr-4 cursor-pointer" onClick={ontextClick} />
+            <FaEllipsisV className="cursor-pointer" />
+          </div>
         </div>
 
         <p className="text-sm font-light text-gray-400 my-2 mx-4">
