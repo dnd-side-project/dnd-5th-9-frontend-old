@@ -7,12 +7,15 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import { useHistory, useLocation } from "react-router-dom";
+import SharePopup from "../ui/organisms/SharePopup";
+import ToastMessage from "../ui/organisms/ToastMessage";
 
 const Meeting = (props) => {
   const location = useLocation();
   const [click, setClick] = useState(false);
   const [mode, setMode] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
+  const [isToastOn, setIsToastOn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const meetingId = props.match.params.id;
 
@@ -27,12 +30,12 @@ const Meeting = (props) => {
 
   const handleShareButtonClick = () => {
     navigator.clipboard.writeText(window.location.href);
-    console.log("copy");
-    setIsCopied(true);
+    setIsOpen(true);
   };
   const handleCloseButtonClick = () => {
-    setIsCopied(false);
+    setIsOpen(false);
   };
+  const handleToast = () => {};
 
   const onDown = (e) => {
     e.preventDefault();
@@ -91,14 +94,6 @@ const Meeting = (props) => {
 
   return (
     <>
-      {isCopied && (
-        <>
-          <div className="w-1/5 h-5 absolute top-4 flex justify-center items-center bg-blue-400 rounded-xl">
-            <span>복사 되었습니다!</span>
-            <button onClick={handleCloseButtonClick}>X</button>
-          </div>
-        </>
-      )}
       <div className="m-4 mt-20">
         <h1 className="mt-8 text-2xl font-bold">
           모임이 가능한 시간을
@@ -122,11 +117,10 @@ const Meeting = (props) => {
             </p>
           </div>
           <div className="flex ml-2 text-xl">
-            <FaShareAlt
-              className="mr-4 cursor-pointer"
+            <FaEllipsisV
+              className="cursor-pointer"
               onClick={handleShareButtonClick}
             />
-            <FaEllipsisV className="cursor-pointer" />
           </div>
         </div>
 
@@ -155,6 +149,14 @@ const Meeting = (props) => {
           <p className="font-bold">2021년 7월</p>
           <FaAngleRight />
         </div>
+
+        {isOpen && (
+          <SharePopup
+            onClose={handleCloseButtonClick}
+            onToastStart={handleToast}
+          />
+        )}
+        <ToastMessage />
 
         {/* 시간표 */}
         <div
