@@ -9,19 +9,30 @@ import {
 import { useHistory, useLocation } from "react-router-dom";
 
 const Meeting = (props) => {
-  const ontextClick = () => navigator.clipboard.writeText("hello");
   const location = useLocation();
   const [click, setClick] = useState(false);
   const [mode, setMode] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
   const meetingId = props.match.params.id;
 
   const { meetingData } = location.state;
+
   // 일단 먼저 이전페이지에 가져온 데이터로
   // meeting data 는 사실 url param으로  fetch(get) 해와야함
 
   // to do meeting id 로 모임 정보 가져와서 뿌려주기
   console.log(meetingId);
   // meeting id 가 유효하지 않으면 홈페이지로 보내버리기
+
+  const handleShareButtonClick = () => {
+    navigator.clipboard.writeText(window.location.href);
+    console.log("copy");
+    setIsCopied(true);
+  };
+  const handleCloseButtonClick = () => {
+    setIsCopied(false);
+  };
 
   const onDown = (e) => {
     e.preventDefault();
@@ -80,6 +91,14 @@ const Meeting = (props) => {
 
   return (
     <>
+      {isCopied && (
+        <>
+          <div className="w-1/5 h-5 absolute top-4 flex justify-center items-center bg-blue-400 rounded-xl">
+            <span>복사 되었습니다!</span>
+            <button onClick={handleCloseButtonClick}>X</button>
+          </div>
+        </>
+      )}
       <div className="m-4 mt-20">
         <h1 className="mt-8 text-2xl font-bold">
           모임이 가능한 시간을
@@ -103,7 +122,10 @@ const Meeting = (props) => {
             </p>
           </div>
           <div className="flex ml-2 text-xl">
-            <FaShareAlt className="mr-4 cursor-pointer" onClick={ontextClick} />
+            <FaShareAlt
+              className="mr-4 cursor-pointer"
+              onClick={handleShareButtonClick}
+            />
             <FaEllipsisV className="cursor-pointer" />
           </div>
         </div>
