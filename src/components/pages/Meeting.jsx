@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaEllipsisV,
   FaAngleLeft,
@@ -29,13 +29,21 @@ const Meeting = (props) => {
   // meeting id 가 유효하지 않으면 홈페이지로 보내버리기
 
   const handleShareButtonClick = () => {
-    navigator.clipboard.writeText(window.location.href);
     setIsOpen(true);
   };
   const handleCloseButtonClick = () => {
     setIsOpen(false);
   };
-  const handleToast = () => {};
+  const handleToast = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setIsToastOn(true);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsToastOn(false);
+    }, 1000);
+  }, [isToastOn]);
 
   const onDown = (e) => {
     e.preventDefault();
@@ -156,7 +164,7 @@ const Meeting = (props) => {
             onToastStart={handleToast}
           />
         )}
-        <ToastMessage />
+        {isToastOn && <ToastMessage />}
 
         {/* 시간표 */}
         <div
