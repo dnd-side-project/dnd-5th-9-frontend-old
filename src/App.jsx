@@ -21,6 +21,7 @@ import Password3 from "./components/pages/Password3";
 import Meeting2 from "./components/pages/Meeting2";
 import Meeting3 from "./components/pages/Meeting3";
 import { useState } from "react";
+import Result from "./components/pages/Result";
 
 // SPA 추후 무조건 개선해야함
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="/meeting2" component={Meeting2} />
           <Route path="/meeting3" component={Meeting3} />
           <Route path="/manage" component={Manage} />
+          <Route path="/result/:id" component={Result} />
         </Switch>
       </BrowserRouter>
     </>

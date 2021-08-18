@@ -23,7 +23,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <FaBars className="mx-3 h-full" onClick={showSidebar} />
       </div>
 
-      <hr className="mb-4" />
+      <hr className="" />
 
       <nav className={sidebar ? "nav-menu active z-50 nav-shadow" : "nav-menu"}>
         <ul className="nav-menu-items">
