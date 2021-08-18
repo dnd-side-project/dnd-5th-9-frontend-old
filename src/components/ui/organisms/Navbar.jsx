@@ -17,7 +17,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     <>
       <div className="flex justify-between m-2 h-9">
         <Link to="/">
-          <img className="h-full p-2" src="images/Logo.png" alt="MOIDA" />
+          <img className="h-full p-2" src="./images/Logo.png" alt="MOIDA" />
         </Link>
 
         <FaBars className="mx-3 h-full" onClick={showSidebar} />

@@ -53,7 +53,7 @@ const Create = () => {
     console.log("submit!", data);
     const response = await axios.post("/meetings", data);
     const id = response.data.data.meetingInfo.id;
-    history.push(`/meeting/${id}`, { meetingData: response.data.data }); // response data 받아 private url 로 가게
+    history.push(`/meetings/${id}`, { meetingData: response.data.data }); // response data 받아 private url 로 가게
   };
 
   return (
