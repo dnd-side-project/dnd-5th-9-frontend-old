@@ -5,26 +5,33 @@ import { FaEllipsisV } from "react-icons/fa";
 
 const ResultDetail = (props) => {
   const [meetingInfo, setMeetingInfo] = useState({ a: true });
+  const [toggle, setToggle] = useState(true);
   const history = useHistory();
   useEffect(() => {
     const meetingId = props.match.params.id;
 
-    // axios
-    //   .get(`/meetings/${meetingId}`)
-    //   .then((response) => {
-    //     const data = response.data.data;
-    //     setMeetingInfo(data.meeting);
-    //   })
-    //   .catch(() => {
-    //     history.push("/");
-    //   });
+    axios
+      .get(`/meetings/${meetingId}`)
+      .then((response) => {
+        const data = response.data.data;
+        setMeetingInfo(data.meeting);
+      })
+      .catch(() => {
+        history.push("/");
+      });
   }, []);
-
+  const handleToggle = (event) => {
+    console.log(event);
+    const { result } = event.target.dataset;
+    console.log(result);
+    if (result === "time") setToggle(true);
+    else setToggle(false);
+  };
   return (
     meetingInfo && (
       <div className="block w-full h-screen bg-gray-50">
         <div className="mx-8">
-          <h1 className="pt-16 text-3xl font-bold mb-16">
+          <h1 className="pt-16 text-3xl font-bold mb-10">
             짜잔 ✨
             <br />
             모임 일정 결과를
@@ -57,84 +64,111 @@ const ResultDetail = (props) => {
           <div className="mt-8 mb-4 border-4 border-gray-100"></div>
         </div>
         <div className="grid grid-cols-2">
-          <div>
-            <p className="text-center text-gray-300">text</p>
-            <hr className="mt-4 border" />
+          <div
+            onClick={handleToggle}
+            data-result="time"
+            className="cursor-pointer"
+          >
+            <p
+              data-result="time"
+              className={`text-center ${
+                toggle ? "text-blue-400" : "text-gray-300"
+              }`}
+            >
+              날짜&시간 결과보기
+            </p>
+            <hr className={`mt-4 border ${toggle && "border-blue-400"}`} />
           </div>
 
-          <div>
-            <p className="text-center text-blue-400">text</p>
-            <hr className="mt-4 border -blue-400 border-blue-400" />
+          <div
+            onClick={handleToggle}
+            data-result="place"
+            className="cursor-pointer"
+          >
+            <p
+              data-result="place"
+              className={`text-center ${
+                toggle ? "text-gray-300" : "text-blue-400"
+              }`}
+            >
+              장소 결과 보기
+            </p>
+            <hr className={`mt-4 border ${!toggle && "border-blue-400"}`} />
           </div>
         </div>
 
         {/* 날짜로 보기  */}
-        <div>
-          <h2>날짜로 보기 </h2>
-        </div>
+        {toggle && (
+          <>
+            <div className="bg-white">
+              <h2>날짜로 보기 </h2>
+              <h1>시간표 처리..시나리오대로 그리기</h1>
 
-        {/* 멤버 보기  */}
+              {/* 멤버 보기  */}
 
-        <div className="mt-8 mb-4 border-4 border-gray-100"></div>
+              <div className="mt-8 mb-4 border-4 border-gray-100"></div>
 
-        <div className="m-4 mt-4">
-          <h2 className="mt-8 text-lg font-bold">
-            참석 멤버 <span className="font-normal">(6명 참여)</span>
-          </h2>
+              <div className="m-4 mt-4 bg-white">
+                <h2 className="mt-8 text-lg font-bold">
+                  참석 멤버 <span className="font-normal">(6명 참여)</span>
+                </h2>
 
-          <div className="mt-4 p-4 w-full shadow-2xl rounded-xl">
-            <div className="grid grid-cols-2">
-              <div className="ml-4">
-                <h3 className="my-6 font-bold">
-                  가능해요 <span className="text-green-500">4</span>
-                </h3>
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-red-200 w-8 h-8 mr-2 rounded-full">
-                    😺
-                  </div>
-                  <div className="h-4 w-4 -ml-5 -mb-4 rounded-full bg-moida"></div>
-                  <p className="ml-1 font-bold">소석진 (나)</p>
-                </div>
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-yellow-200 w-8 h-8 mr-2 rounded-full">
-                    🎀
-                  </div>
-                  <p>하영이</p>
-                </div>
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-yellow-300 w-8 h-8 mr-2 rounded-full">
-                    ⚽
-                  </div>
-                  <p>경후니</p>
-                </div>
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-green-200 w-8 h-8 mr-2 rounded-full">
-                    🍩
-                  </div>
-                  <p>이혀니</p>
-                </div>
-              </div>
+                <div className="mt-4 p-4 w-full shadow-2xl rounded-xl">
+                  <div className="grid grid-cols-2">
+                    <div className="ml-4">
+                      <h3 className="my-6 font-bold">
+                        가능해요 <span className="text-green-500">4</span>
+                      </h3>
+                      <div className="flex items-center mb-4">
+                        <div className="flex justify-center items-center bg-red-200 w-8 h-8 mr-2 rounded-full">
+                          😺
+                        </div>
+                        <div className="h-4 w-4 -ml-5 -mb-4 rounded-full bg-moida"></div>
+                        <p className="ml-1 font-bold">소석진 (나)</p>
+                      </div>
+                      <div className="flex items-center mb-4">
+                        <div className="flex justify-center items-center bg-yellow-200 w-8 h-8 mr-2 rounded-full">
+                          🎀
+                        </div>
+                        <p>하영이</p>
+                      </div>
+                      <div className="flex items-center mb-4">
+                        <div className="flex justify-center items-center bg-yellow-300 w-8 h-8 mr-2 rounded-full">
+                          ⚽
+                        </div>
+                        <p>경후니</p>
+                      </div>
+                      <div className="flex items-center mb-4">
+                        <div className="flex justify-center items-center bg-green-200 w-8 h-8 mr-2 rounded-full">
+                          🍩
+                        </div>
+                        <p>이혀니</p>
+                      </div>
+                    </div>
 
-              <div className="ml-4">
-                <h3 className="my-6 font-bold">
-                  불가능해요 <span className="text-red-500">2</span>
-                </h3>
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-blue-300 w-8 h-8 mr-2 rounded-full">
-                    🌹
+                    <div className="ml-4">
+                      <h3 className="my-6 font-bold">
+                        불가능해요 <span className="text-red-500">2</span>
+                      </h3>
+                      <div className="flex items-center mb-4">
+                        <div className="flex justify-center items-center bg-blue-300 w-8 h-8 mr-2 rounded-full">
+                          🌹
+                        </div>
+                        <p>람이</p>
+                      </div>
+                      <div className="flex items-center mb-4">
+                        <div className="flex justify-center items-center bg-indigo-400 w-8 h-8 mr-2 rounded-full">
+                          🥑
+                        </div>
+                        <p>서하서하</p>
+                      </div>
+                    </div>
                   </div>
-                  <p>람이</p>
-                </div>
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-indigo-400 w-8 h-8 mr-2 rounded-full">
-                    🥑
-                  </div>
-                  <p>서하서하</p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
     )
   );
