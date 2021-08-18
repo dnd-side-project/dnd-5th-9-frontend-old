@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
   FaEllipsisV,
@@ -16,13 +17,27 @@ const Meeting = (props) => {
   const [mode, setMode] = useState(false);
   const [isToastOn, setIsToastOn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  const meetingId = props.match.params.id;
-
+  const [meetingInfo, setMeeingInfo] = useState({});
+  const history = useHistory();
   const { meetingData } = location.state;
 
   // 일단 먼저 이전페이지에 가져온 데이터로
   // meeting data 는 사실 url param으로  fetch(get) 해와야함
+  useEffect(() => {
+    const meetingId = props.match.params.id;
+    const fetchData = async () => {
+      const response = await axios.get(`/meeting/${meetingId}`);
+
+      if (true) {
+        //  없는 url 이였으면 홈으로
+        history.push("/");
+      }
+      return response.data;
+    };
+    fetchData().then((data) => {
+      setMeetingInfo(data);
+    });
+  }, []);
 
   // to do meeting id 로 모임 정보 가져와서 뿌려주기
   console.log(meetingId);
