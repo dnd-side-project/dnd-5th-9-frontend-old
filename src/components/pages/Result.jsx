@@ -9,7 +9,6 @@ const Result = (props) => {
   const history = useHistory();
   console.log(meetingInfo);
 
-  const handleViewDetail = () => {};
   useEffect(() => {
     const meetingId = props.match.params.id;
 
@@ -64,32 +63,16 @@ const Result = (props) => {
                   <span className="ml-10">출발 위치: 잠실역</span>
                 </li>
               </ul>
-              <button className="mt-6 border-2 rounded p-3 border-blue-300 text-blue-300 w-full flex justify-center items-center">
-                모임 내용 상세보기
-              </button>
+              <Link to={`/result/${props.match.params.id}/detail`}>
+                <button className="mt-6 border-2 rounded p-3 border-blue-300 text-blue-300 w-full flex justify-center items-center">
+                  모임 내용 상세보기
+                </button>
+              </Link>
             </div>
-            {/* <div className="my-8" />
-
-            <div className="flex justify-between items-center mx-4">
-              <div className="flex items-center">
-                <p className="text-xl font-bold">
-                  진행중인 모임 {meetingInfo.title}
-                </p>
-                <p className="text-xs mx-2 font-light text-white bg-yellow-400 p-1 px-2 rounded-xl">
-                  진행중
-                </p>
-              </div>
-              <div className="flex ml-2 text-xl"></div>
-            </div>
-
-            <p className="text-sm font-light text-gray-400 my-2 mx-4">
-              {meetingInfo.description} 진행중
-            </p>
-
-            <hr /> */}
           </div>
-
-          <BottomButton onClinck={handleViewDetail}>확인</BottomButton>
+          <Link to={`/result/${props.match.params.id}/detail`}>
+            <BottomButton>확인</BottomButton>
+          </Link>
         </div>
       </div>
     )
