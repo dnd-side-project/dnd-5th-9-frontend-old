@@ -1,25 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaEllipsisV,
   FaAngleLeft,
   FaAngleRight,
   FaPencilAlt,
+  FaShareAlt,
 } from "react-icons/fa";
 import { useHistory, useLocation } from "react-router-dom";
+import SharePopup from "../ui/organisms/SharePopup";
+import ToastMessage from "../ui/organisms/ToastMessage";
 
 const Meeting = (props) => {
   const location = useLocation();
   const [click, setClick] = useState(false);
   const [mode, setMode] = useState(false);
+  const [isToastOn, setIsToastOn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const meetingId = props.match.params.id;
 
   const { meetingData } = location.state;
+
   // 일단 먼저 이전페이지에 가져온 데이터로
   // meeting data 는 사실 url param으로  fetch(get) 해와야함
 
   // to do meeting id 로 모임 정보 가져와서 뿌려주기
   console.log(meetingId);
   // meeting id 가 유효하지 않으면 홈페이지로 보내버리기
+
+  const handleShareButtonClick = () => {
+    setIsOpen(true);
+  };
+  const handleCloseButtonClick = () => {
+    setIsOpen(false);
+  };
+  const handleToast = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setIsToastOn(true);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsToastOn(false);
+    }, 1000);
+  }, [isToastOn]);
 
   const onDown = (e) => {
     e.preventDefault();
@@ -80,9 +104,9 @@ const Meeting = (props) => {
     <>
       <div className="m-4 mt-20">
         <h1 className="mt-8 text-2xl font-bold">
-          출발하실 위치를
+          모임이 가능한 시간을
           <br />
-          검색해주세요.
+          추가해주세요.
         </h1>
         <p className="text-gray-400 text-sm mt-3 font-light">
           <span className="text-red-400 mr-2 font-medium">TIP</span>
@@ -100,7 +124,12 @@ const Meeting = (props) => {
               진행중
             </p>
           </div>
-          <FaEllipsisV />
+          <div className="flex ml-2 text-xl">
+            <FaEllipsisV
+              className="cursor-pointer"
+              onClick={handleShareButtonClick}
+            />
+          </div>
         </div>
 
         <p className="text-sm font-light text-gray-400 my-2 mx-4">
@@ -128,6 +157,14 @@ const Meeting = (props) => {
           <p className="font-bold">2021년 7월</p>
           <FaAngleRight />
         </div>
+
+        {isOpen && (
+          <SharePopup
+            onClose={handleCloseButtonClick}
+            onToastStart={handleToast}
+          />
+        )}
+        {isToastOn && <ToastMessage />}
 
         {/* 시간표 */}
         <div
